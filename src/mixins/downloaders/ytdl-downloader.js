@@ -17,11 +17,14 @@ export default {
           options[i] = lookups.optionsAbreviations[options[i]];
         }
       }
+
       // to convert options from cmd formate to camel case
       // ex: --dump-single-json to dumpSingleJson
       options[i] = options[i].replace(/-([a-z])/g, (g) => {
         return g[1].toUpperCase();
       });
+      options[i] = options[i].replace("-", "");
+
       //convert options array to object
       //ex: array: 'dumpSingleJson'
       // object: { dumpSingleJson : true }
