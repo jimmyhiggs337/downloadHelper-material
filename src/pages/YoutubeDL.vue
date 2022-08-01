@@ -4,6 +4,14 @@
       <q-toolbar class="bg-primary text-white">
         <div class="text-subtitle2">Youtube Downloader</div>
         <q-space />
+        <q-btn
+          stretch
+          flat
+          label="Documentation"
+          no-caps
+          target="_blank"
+          href="https://github.com/yt-dlp/yt-dlp"
+        />
         <q-tabs
           v-model="tab"
           align="left"
@@ -30,10 +38,7 @@
           </q-card-section>
         </q-tab-panel>
         <q-tab-panel name="File" style="padding: 2rem">
-          <fileUploader
-            label="Select .txt file"
-            allowedFileTypes=".txt"
-          ></fileUploader>
+          <fileUploader label="Select .txt file" types=".txt"></fileUploader>
         </q-tab-panel>
       </q-tab-panels>
       <q-separator />
@@ -42,7 +47,7 @@
         <q-select
           square
           outlined
-          v-model="downloaders"
+          v-model="downloader"
           :options="downloaderOptions"
           label="Downloader"
           class="col q-mx-xs"
@@ -68,13 +73,29 @@
               @keydown="processTextareaFill($event, 'convertShadowText')"
             />
             <q-checkbox v-model="convertFile" label="Convert Output file" />
+            <q-checkbox v-model="customOptions" label="Add Custom Options" />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <q-input
+              v-if="customOptions"
+              square
+              outlined
+              v-model="dlCustomOptions"
+              label="Custom Options"
+              class="col-grow q-mx-xs q-my-sm"
+              hint="any additional yt-dlp options"
+            />
           </div>
         </div>
       </div>
       <q-separator />
       <q-card-actions class="q-ma-sm justify-between">
         <q-checkbox v-model="audioOnly" label="Audio Only" />
-        <q-btn class="bg-primary text-white">download</q-btn>
+        <q-btn class="bg-primary text-white" @click="downloadVideos"
+          >download</q-btn
+        >
       </q-card-actions>
     </q-card>
   </q-page>
@@ -91,13 +112,12 @@ export default {
     return {
       URLs: ref(""),
       tab: ref("URL"),
-      downloaders: ref("default"),
+      downloader: ref("default"),
       audioOnly: ref(false),
-      quality: ref("Max"),
+      quality: ref("Best"),
       exportfileType: ref(""),
-      fileLabel: "",
-      allowedFileTypes: "",
       convertFile: ref(false),
+      customOptions: ref(false),
       downloaderOptions: [
         "default",
         "aria2c",
@@ -108,7 +128,8 @@ export default {
         "httpie",
         "wget",
       ],
-      qualityOptions: ["Max"],
+      dlCustomOptions: "",
+      qualityOptions: ["Best"],
       urlShadowText: `ex: \n url1 \n url2`,
       convertShadowText: `Ex: .mp4`,
     };
@@ -129,6 +150,16 @@ export default {
       if (e.target.value.length > 0) {
         this[shadowTextName] = "";
       }
+    },
+    downloadVideos() {
+      console.log(
+        "URLs: " + this.URLS,
+        "downloader: " + this.downloader,
+        "audioOnly: " + this.audioOnly,
+        "Quality: " + this.quality,
+        "convertFile: " + this.convertFile,
+        "exportFileType: " + this.exportfileType
+      );
     },
   },
 };
