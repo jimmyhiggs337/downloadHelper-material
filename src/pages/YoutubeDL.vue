@@ -26,7 +26,7 @@
         </q-tab-panel>
       </q-tab-panels>
       <q-separator />
-      <q-card-actions align="right">
+      <q-card-actions align="right" class="q-ma-sm">
         <q-btn class="bg-primary text-white">download</q-btn>
       </q-card-actions>
     </q-card>

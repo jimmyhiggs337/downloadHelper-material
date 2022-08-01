@@ -1,9 +1,9 @@
 <template v-model>
   <div class="row">
-    <div class="col-10">
+    <div class="col-grow">
       <q-file outlined :label="label" :accept="types" />
     </div>
-    <q-btn label="upload" flat class="text-grey-7 col-2" />
+    <q-btn outline label="upload" color="primary" class="q-ml-sm col-auto" />
   </div>
 </template>
 <script>
@@ -15,4 +15,4 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style></style>

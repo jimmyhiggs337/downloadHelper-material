@@ -1,0 +1,33 @@
+{
+  "optionsAbreviations": {
+    "-h": "--help",
+    "-U": "--update",
+    "-i": "--ignore-errors",
+    "-4": "--force-ipv4",
+    "-6": "--force-ipv6",
+    "-I": "--playlist-items",
+    "-N": "--concurrent-fragments",
+    "-r": "--limit-rate",
+    "-R": "--retries",
+    "-a": "--batch-file",
+    "-P": "--paths",
+    "-o": "--output",
+    "-w": "--no-overwrites",
+    "-c": "--continue",
+    "-q": "--quiet",
+    "-s": "--simulate",
+    "-O": "--print",
+    "-j": "--dump-json",
+    "-J": "--dump-single-json",
+    "-v": "--verbose",
+    "-f": "--format",
+    "-S": "--format-sort",
+    "-F": "--list-formats",
+    "-u": "--username",
+    "-p": "--password",
+    "-2": "--twofactor",
+    "-n": "--netrc",
+    "-x": "--extract-audio",
+    "-k": "--keep-video"
+  }
+}
