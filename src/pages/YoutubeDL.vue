@@ -85,7 +85,7 @@
               v-model="dlCustomOptions"
               label="Custom Options"
               class="col-grow q-mx-xs q-my-sm"
-              hint="any additional yt-dlp options"
+              hint="any additional yt-dlp options, type them as you would in the command line, i.e. --[option1][SPACE]--[option2][SPACE]-[abbreviatedOption]"
             />
           </div>
         </div>

@@ -9,26 +9,28 @@ export default {
 
   translateOptions(options) {
     var objOptions = {};
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].length < 2) {
-        if (options[i] in lookups.optionsAbreviations) {
+    //splits the string into an array of individual options
+    var arrayOptions = options.split(" ");
+    for (let i = 0; i < arrayOptions.length; i++) {
+      if (arrayOptions[i].length < 2) {
+        if (arrayOptions[i] in lookups.optionsAbreviations) {
           //uses lookup table to convert options abbreviations to full option
           // ex: -k => --keep-video
-          options[i] = lookups.optionsAbreviations[options[i]];
+          arrayOptions[i] = lookups.optionsAbreviations[arrayOptions[i]];
         }
       }
 
       // to convert options from cmd formate to camel case
       // ex: --dump-single-json to dumpSingleJson
-      options[i] = options[i].replace(/-([a-z])/g, (g) => {
+      arrayOptions[i] = arrayOptions[i].replace(/-([a-z])/g, (g) => {
         return g[1].toUpperCase();
       });
-      options[i] = options[i].replace("-", "");
+      arrayOptions[i] = arrayOptions[i].replace("-", "");
 
       //convert options array to object
       //ex: array: 'dumpSingleJson'
       // object: { dumpSingleJson : true }
-      objOptions[options[i]] = true;
+      objOptions[arrayOptions[i]] = true;
     }
     return objOptions;
   },
