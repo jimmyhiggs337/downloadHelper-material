@@ -73,7 +73,7 @@
               @keydown="processTextareaFill($event, 'convertShadowText')"
             />
             <q-checkbox v-model="convertFile" label="Convert Output file" />
-            <q-checkbox v-model="customOptions" label="Add Custom Options" />
+            <q-checkbox v-model="customOptions" label="Add Custom Params" />
           </div>
         </div>
         <div class="col-12">

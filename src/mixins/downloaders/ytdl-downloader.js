@@ -3,7 +3,7 @@ const fs = require("fs");
 const lookups = require("../lookup.json");
 export default {
   //download function
-  download(url, flags, options) {},
+  download(url, audioOnly, flags, options) {},
 
   //---------------------------------- helper functions -----------------------------------------------
 
